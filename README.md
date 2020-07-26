@@ -95,3 +95,72 @@ urlpatterns = [
 ]
 <-- End code section -->
 ```
+
+## heroku
+Be in root directory
+```
+create heroku app:
+---
+
+heroku login
+
+heroku create <app>
+```
+
+```
+gunicorn setup:
+---
+
+pip3 install gunicorn
+```
+
+```
+running gunicorn locally:
+---
+
+gunicorn --chdir <project_name>/ <project_name>.wsgi
+# gunicorn: command to start the gunocron server
+# --chdir: command to change directory
+# <project_name>/: path for the change directory
+# <project_name>.: further path for where the run file is found
+# wsgi: the name of the run file
+```
+
+```
+Create heroku Procfile
+---
+
+touch Procfile
+code Procfile
+
+<-- Start code section -->
+web: gunicorn --chdir <project_name>/ <project_name>.wsgi
+<-- End code section -->
+```
+
+```
+Updating allowed hosts (for local testing)
+---
+code <project_name>/<project_name>/settings.py
+
+<-- Start code section -->
+ALLOWED_HOSTS = ['0.0.0.0']
+<-- End code section -->
+
+Testing heroku locally
+---
+heroku local
+```
+
+```
+import django_heroku
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+```
+
+```
+Requirments
+---
+pip3 freeze > requirements.txt
+```
