@@ -1,1 +1,1 @@
-web: gunicorn --chdir <project_name>/ <project_name>.wsgi
+web: gunicorn --chdir tutorial1/ tutorial1.wsgi
